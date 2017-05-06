@@ -1,0 +1,13 @@
+---
+# This playbook deploys the whole application stack in this site.
+- name: Prepare Servers (Install Plesk)
+  hosts: all
+  remote_user: root
+
+  roles:
+#    - swap-enabled
+    - plesk-typical
+
+
+- include: plesk-multi-server-mn.yml
+- include: plesk-multi-server-sn.yml

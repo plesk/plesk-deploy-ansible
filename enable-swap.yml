@@ -1,0 +1,9 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: Enable swap on a server
+  hosts: all
+  remote_user: root
+
+  roles:
+    - swap-enabled

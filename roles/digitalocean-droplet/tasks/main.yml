@@ -1,0 +1,31 @@
+---
+
+- name: Create DigitalOcean Droplet
+  digital_ocean:
+    state: present
+    command: droplet
+    name: "{{do_project_name}}"
+    api_token: "{{do_api_token}}"
+    size_id: "{{do_size_id}}"
+    image_id: "{{do_image_id}}"
+    ssh_key_ids: "{{ do_ssh_key_id }}"
+    region_id: "{{do_region_id}}"
+    wait: yes
+    wait_timeout: 120
+    unique_name: yes
+  when: do_ssh_key_id is defined
+  register: digital_ocean_droplet
+
+- name: Add new host to Ansible inventory
+  add_host:
+    name: "{{ digital_ocean_droplet.droplet.ip_address }}"
+    groups: digitalocean_hosts
+  when: digital_ocean_droplet.droplet is defined
+
+- name: Wait for port 22 to become available.
+  local_action: "wait_for port=22 host={{ digital_ocean_droplet.droplet.ip_address }}"
+
+- pause:
+    seconds: 15
+
+

@@ -1,0 +1,14 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: DigitalOcean Droplet
+  remote_user: root
+  hosts: localhost
+  roles:
+    - digitalocean-droplet
+
+- name: Plesk install to Droplet
+  remote_user: root
+  hosts: digitalocean_hosts
+  roles:
+    - plesk-typical

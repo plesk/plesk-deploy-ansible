@@ -1,0 +1,14 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- ini_file: dest=/usr/local/psa/admin/conf/panel.ini
+            section=extensions
+            option=catalog.url
+            value={{extore_url}}
+            backup=yes
+
+- name: Switch Plesk on Management Node to Service Provider view
+  command: plesk bin poweruser --off
+
+- name: Install Management Node extension
+  command: plesk bin extension --install plesk-multi-server

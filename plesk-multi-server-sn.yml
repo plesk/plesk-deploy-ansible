@@ -1,0 +1,19 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: Install Service Nodes
+  hosts: service-nodes
+  remote_user: root
+  roles:
+    - plesk-typical
+
+#- name: Send notification message via Slack all options
+#  local_action:
+#    module: slack
+#    token: https://hooks.slack.com/services/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
+#    msg: "Service Node installation {{ inventory_hostname }} is completed"
+#    channel: "@segorov"
+#    username: "Ansible on {{ inventory_hostname }}"
+#    icon_url: "http://www.example.com/some-image-file.png"
+#    link_names: 0
+#    parse: 'none'

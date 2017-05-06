@@ -1,0 +1,15 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- ini_file: dest=/usr/local/psa/admin/conf/panel.ini
+          section=extensions
+          option=catalog.url
+          value={{extore_url}}
+          backup=yes
+
+#- name: Download Management Node extension
+#  file: 
+#  get_url: url={{extore_sn}} dest=/root/pms-sn.zip mode=0644
+#
+#- name: Install Management Node extension
+#  command: plesk bin extension --install /root-sn.zip

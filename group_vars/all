@@ -1,0 +1,81 @@
+---
+### Variables listed here are applicable to all host groups
+
+######################################################
+### Plesk settings begin
+
+### Define URL for license file
+# plesk_license_url: "<TBD_license_file_URL>"
+
+### Activation code for trial license can be obtained here http://www.plesk.com/download
+plesk_license_activation_code: A00J00-NBNH04-M5YD13-9K9733-YPCA99
+
+### Installation parameters
+one_click_installer: https://autoinstall.plesk.com/one-click-installer
+plesk_installer: https://autoinstall.plesk.com/plesk-installer
+plesk_tier: testing
+
+### Extensions catalog URL
+extore_url: https://ext.plesk.com
+
+
+### Plesk initialization parameters
+eula_license_agreed: true
+ip_type: shared
+admin_info_not_required: true
+admin_email: admin@mplesk.ru
+admin_company: Plesk
+admin_address: Vordergasse 59
+admin_city: Schaffhausen
+admin_state: Schaffhausen
+admin_zip: 8200
+admin_country: SW
+admin_phone: 89139130000
+
+plesk_admin_password: ifgrfc2017
+
+### Plesk settings end
+######################################################
+
+
+
+######################################################
+### Server settings begin
+
+### Swapfile size
+swapsize: 4G
+
+### SSH key private part
+ssh_key_file: ~/.ssh/id_rsa
+
+### Server settings begin
+######################################################
+
+
+
+######################################################
+### Digitalocean settings begin
+
+do_project_name: "segorov-ansible-test.plesk.space"
+
+### API token - to get go to panel and get in menu "API"
+do_api_token: 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da
+
+### To get a list of all DC regions
+#list_of_regions='curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/regions"'
+do_region_id: fra1
+
+### To get list of all VM sizes
+#list_of_sizes='curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/sizes"'
+do_size_id: 512mb
+
+### to get a list of available SSH keys 
+# curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/account/keys"
+do_ssh_key_id: 2009036
+
+### OS image
+# curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/images"
+do_image_id: centos-7-2-x64
+
+### Digitalocean settings end
+######################################################
