@@ -1,0 +1,179 @@
+---
+### Variables listed here are applicable to all host groups
+
+######################################################
+### Plesk settings begin
+
+### Define URL for license file
+# plesk_license_url: "<TBD_license_file_URL>"
+
+### Activation code for trial license can be obtained here http://www.plesk.com/download
+plesk_license_activation_code: A00J00-NBNH04-M5YD13-9K9733-YPCA99
+
+### Installation parameters
+one_click_installer: https://autoinstall.plesk.com/one-click-installer
+plesk_installer: https://autoinstall.plesk.com/plesk-installer
+plesk_tier: testing
+
+### Extensions catalog URL
+extore_url: https://ext.plesk.com
+
+
+### Plesk initialization parameters
+eula_license_agreed: true
+ip_type: shared
+admin_info_not_required: true
+admin_email: admin@mplesk.ru
+admin_company: Plesk
+admin_address: Vordergasse 59
+admin_city: Schaffhausen
+admin_state: Schaffhausen
+admin_zip: 8200
+admin_country: SW
+admin_phone: 89139130000
+
+plesk_admin_password: ifgrfc2017
+
+### Plesk settings end
+######################################################
+
+
+
+
+######################################################
+### VM settings begin
+
+### Swapfile size
+swapsize: 1G
+
+### SSH key private part
+ssh_key_file: ~/.ssh/id_rsa
+ssh_pubkey_file: ~/.ssh/id_rsa.pub
+
+### Server settings begin
+######################################################
+
+
+
+
+######################################################
+### Digitalocean settings begin
+
+do_project_name: "segorov-ansible-test.plesk.space"
+
+### API token - to get go to panel and get in menu "API"
+do_api_token: 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da
+
+### To get a list of all DC regions
+#list_of_regions='curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/regions"'
+do_region_id: fra1
+
+### To get list of all VM sizes
+#list_of_sizes='curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/sizes"'
+do_size_id: 512mb
+
+### to get a list of available SSH keys 
+# curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/account/keys"
+do_ssh_key_id: 2009036
+
+### OS image
+# curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/images"
+do_image_id: centos-7-2-x64
+
+### Digitalocean settings end
+######################################################
+
+
+
+
+
+######################################################
+### Amazon EC2 settings begin
+
+### It's recommended to install AWS CLI to get additional parameters or tests
+# how to install pip: https://pip.pypa.io/en/stable/installing/
+# pip install awscli
+
+amazon_aws_access_key: AKIAJEWLZ5BB6BHZZDUQ
+#amazon_aws_secret_key: NwSQ+kZXpH0PpluFKgh0mLeQZAFkngJSpUzWJ3342
+amazon_aws_secret_key: NwSQ+kZXpH0PpluFKgh0mLeQZAFkngJSpUzWJ3W6
+
+### SSH key in your AWS account
+amazon_ssh_key_id: segorov
+
+### AWS EC2 VM instance type 
+# https://aws.amazon.com/ec2/instance-types/
+ec2_instance_type: t2.micro
+
+### AWS EC2 Regions
+# http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
+ec2_region_id: eu-west-1
+
+### ImageId can be found in your AWS console if it's your image, or via command below if it's Marketplace image
+### IMPORTANT: make sure that ec2_region_id is the same, which is used in your ~/.aws/config for awscli
+# aws ec2 describe-images --owners aws-marketplace --filters Name=description,Values='*Plesk*' | grep -A 20 '"Name": "Plesk 17.5' | grep '"Name":\|"ImageId":'
+ec2_image: ami-54c5c232
+
+### Get a list of available subnets from your AWS account
+# aws ec2 describe-subnets | less
+ec2_vpc_subnet_id: subnet-792ef230
+
+### Security Group should be selected from a list of pre-defined in Marketplace
+# aws ec2 describe-images --owners aws-marketplace --filters Name=group-name,Values='*Plesk Onyx*'
+ec2_security_group: sg-0aa6b673
+
+### Access to Plesk Panel
+# https://<host-name-or-IP>:8443
+
+### Access server via ssh
+# ssh ec2-user@<host-name-or-IP>
+
+### Amazon EC2 settings end
+######################################################
+
+
+
+
+
+######################################################
+### Azure settings begin
+
+### 
+# how to install pip: https://pip.pypa.io/en/stable/installing/
+# pip install azure-cli
+
+### Initial configuration of Azure CLI
+# az login
+
+### Define Azure Region(Location)
+# A list of available locations can be found here https://azure.microsoft.com/en-us/regions/
+azure_location: "East US"
+
+### Get list of available offers in Azure Marketplace
+# az vm image list-offers -p Plesk -l "East US"
+
+
+### Get list of available images in scope of offers in Azure Marketplace
+### Note: this is just for an information. It's not used for a configuration.
+# az vm image list-skus --offer plesk-onyx-linux --publisher Plesk --location "East US"
+
+### Get list of available images in scope of offers in Azure Marketplace
+# az vm image list --offer plesk-onyx-linux --publisher Plesk --location "East US" --all
+
+###
+# 
+# az vm create -n Segorov-VM -g segorov-rg --image plesk:plesk-onyx-linux:plsk-cent-hst-azr-m:17.5.3
+#        --vnet-name MyVnet --subnet subnet1 --availability-set MyAvailabilitySet --public-ip-
+#        address-dns-name MyUniqueDnsName --ssh-key-value ~/.ssh/id_rsa.pub
+
+azure_name: Azure VM with Plesk
+azure_role_size: Small
+azure_image: plesk:plesk-onyx-linux:plsk-cent-hst-azr-m:17.5.3
+azure_user: root
+ssh_cert_path: "{{ssh_pubkey_file}}"
+#    storage_account: my-storage-account
+#    wait: True
+#    state: present
+
+### Azure settings end
+######################################################

@@ -1,0 +1,14 @@
+---
+ - name: Provision Azure VM
+  azure:
+    name: "{{azure_name}}"
+    role_size: "{{azure_role_size}}"
+    image: "{{azure_image}}"
+    location: "{{azure_location}}"
+    user: "{{azure_user}}"
+    ssh_cert_path: "{{ssh_pubkey_file}}"
+#    storage_account: my-storage-account
+#    wait: True
+#    subscription_id: 
+#    state: present
+#  delegate_to: localhost

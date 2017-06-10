@@ -1,0 +1,8 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: Amazon EC2 VM
+  remote_user: ec2-user
+  hosts: localhost
+  roles:
+    - amazon-ec2
