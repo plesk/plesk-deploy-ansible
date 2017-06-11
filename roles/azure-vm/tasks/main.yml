@@ -1,5 +1,5 @@
 ---
- - name: Provision Azure VM
+- name: Provision Azure VM
   azure:
     name: "{{azure_name}}"
     role_size: "{{azure_role_size}}"

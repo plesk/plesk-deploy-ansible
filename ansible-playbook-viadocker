@@ -1,0 +1,21 @@
+#!/bin/sh
+
+new_args=()
+
+for var in "$@"
+do
+    arg=$var
+    echo "$var" | grep '^\(.*\.yml\|hosts\)$' >/dev/null 2>&1
+    if [ 0 -eq 0$? ]; then
+        arg="/ansible/$var"
+    fi
+    new_args=( ${new_args[@]} $arg )
+done
+
+set -- ${1:$#} ${new_args[@]}
+
+echo $@
+
+
+docker run -v `pwd`/:/ansible -i williamyeh/ansible:centos7 ansible-playbook $@
+docker rm $(docker ps -a | grep 'ansible.*Exited' | awk '{print $1;}') 2>/dev/null
