@@ -1,5 +1,38 @@
 #!/bin/sh
 
+ansible_workdir=`pwd`
+
+if [ 0 -ge 0$# ]; then
+	echo "This script is intended to use ansible via docker container."
+	echo "You should execute the script with parameters like you use for ansible-playbook".
+	echo "Usage sample: $0 -i host myplaybook.yml"
+	exit 0
+fi
+
+
+how_to_execute()
+{
+	echo "You should execute the script in a directory with ansible configuration files structure"
+	echo "i.e. where the following files/dirs are located:"
+	echo "  ./group_vars/"
+	echo "  ./hosts"
+	echo "  ./roles/"
+	echo "..."
+	echo "You should specify configuration files like hosts, myplaybook.yml w/o dirs, i.e. from current location."
+}
+
+if [ ! -f ${ansible_workdir}/hosts -o ! -d ${ansible_workdir}/roles -o ! -d ${ansible_workdir}/group_vars ]; then
+	how_to_execute
+	exit 1
+fi
+
+
+docker --help >/dev/null 2>&1
+if [ 0 -ne 0$? ]; then
+	echo "Error: docker is not installed. You should install docker to use the script."
+	exit 1
+fi
+
 new_args=()
 
 for var in "$@"
@@ -7,6 +40,11 @@ do
     arg=$var
     echo "$var" | grep '^\(.*\.yml\|hosts\)$' >/dev/null 2>&1
     if [ 0 -eq 0$? ]; then
+	echo "$var" | grep '\/' > /dev/null 2>&1
+	if [ 0 -eq 0$? ]; then
+		how_to_execute
+		exit 1
+	fi 
         arg="/ansible/$var"
     fi
     new_args=( ${new_args[@]} $arg )
@@ -17,5 +55,5 @@ set -- ${1:$#} ${new_args[@]}
 echo $@
 
 
-docker run -v `pwd`/:/ansible -i williamyeh/ansible:centos7 ansible-playbook $@
+docker run -v ${ansible_workdir}:/ansible -i williamyeh/ansible:centos7 ansible-playbook $@
 docker rm $(docker ps -a | grep 'ansible.*Exited' | awk '{print $1;}') 2>/dev/null
