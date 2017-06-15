@@ -23,13 +23,13 @@ extore_url: https://ext.plesk.com
 eula_license_agreed: true
 ip_type: shared
 admin_info_not_required: true
-admin_email: admin@mplesk.ru
+admin_email: admin@none.none
 admin_company: Plesk
-admin_address: Vordergasse 59
-admin_city: Schaffhausen
-admin_state: Schaffhausen
-admin_zip: 8200
-admin_country: SW
+admin_address: Oct 4
+admin_city: Novosibirsk
+admin_state: Novosibirskaya Oblast
+admin_zip: 630000
+admin_country: RU
 admin_phone: 89139130000
 
 ### Plesk settings end
