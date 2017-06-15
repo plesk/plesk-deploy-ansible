@@ -12,6 +12,7 @@ The playbooks allow to deploy Plesk in cases:
   - (TODO) you want to create bare Azure VM based on some AMI and auto-deploy Plesk there
  
 
+You need 2+ ansible.
 You can run ansible in two ways.
 
 The first one directly via CLI. In such case you need to have ansible installed on your machine:
@@ -19,6 +20,8 @@ The first one directly via CLI. In such case you need to have ansible installed 
 Sample: `ansible-playbook -i hosts plesk-amazon-ec2-from-ami.yml`
 
 The second way is to use Ansible shipped via Docker container. This way is preferred if you already use Docker and don't want to install one more piece of software to your machine because ansible is usually installed via pip, it also can require some additional libs, etc etc etc.
+
+Note: see open issue, described in FAQ below.
 
 To use this approach, you can just have Docker installed, and you need to run as follows: `./ansible-playbook-viadocker -i hosts plesk-amazon-ec2-from-ami.yml`
 
