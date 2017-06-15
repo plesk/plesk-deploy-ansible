@@ -118,7 +118,7 @@ ec2_region_id: eu-west-1
 # an alternative way to identify image is to specify it's name by mask
 # note: if ec2_ami_id is defined, it has higher priority
 # note: if by the specified mask more than one image is found then task will be stopped with a list of available images
-ec2_ami_name: "*Plesk*17.5*Web Hosting*CentOS*7*"
+ec2_ami_name: "*Plesk*17.5*WordPress*CentOS*7*"
 
 ### Get a list of available subnets from your AWS account
 # aws ec2 describe-subnets | less
