@@ -27,10 +27,15 @@
 #  register: 
 #  when: ec2_ami_id is undefined or ami_find.results[1] is defined
 
+- name: Load credentials.yml with auth data
+  include_vars:
+    file: group_vars/credentials.yml
+    name: auth
+
 - name: Create EC2 Instance
   ec2:
-    aws_access_key: "{{amazon_aws_access_key}}"
-    aws_secret_key: "{{amazon_aws_secret_key}}"
+    aws_access_key: "{{auth.amazon_aws_access_key}}"
+    aws_secret_key: "{{auth.amazon_aws_secret_key}}"
     key_name: "{{amazon_ssh_key_id}}"
     instance_type: "{{ec2_instance_type}}"
     image: "{{ec2_ami_id}}"

@@ -61,9 +61,6 @@ ssh_pubkey_file: ~/.ssh/id_rsa.pub
 
 do_project_name: "segorov-ansible-test.plesk.space"
 
-### API token - to get go to panel and get in menu "API"
-do_api_token: 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da
-
 ### To get a list of all DC regions
 #list_of_regions='curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/regions"'
 do_region_id: fra1
@@ -86,17 +83,12 @@ do_image_id: centos-7-2-x64
 
 
 
-
 ######################################################
 ### Amazon EC2 settings begin
 
 ### It's recommended to install AWS CLI to get additional parameters or tests
 # how to install pip: https://pip.pypa.io/en/stable/installing/
 # pip install awscli
-
-amazon_aws_access_key: AKIAJEWLZ5BB6BHZZDUQ
-#amazon_aws_secret_key: NwSQ+kZXpH0PpluFKgh0mLeQZAFkngJSpUzWJ3342
-amazon_aws_secret_key: NwSQ+kZXpH0PpluFKgh0mLeQZAFkngJSpUzWJ3W6
 
 ### SSH key in your AWS account
 amazon_ssh_key_id: segorov
@@ -136,7 +128,6 @@ ec2_security_group: sg-0aa6b673
 
 ### Amazon EC2 settings end
 ######################################################
-
 
 
 
