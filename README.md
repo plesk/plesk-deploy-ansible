@@ -2,12 +2,12 @@ This is a set of ansible playbooks for various Plesk deployment
 ===============================================================
 
 The playbooks allows to deploy plesk in cases:
-  - you already have some server and need to deploy Plesk
-  - you want to create VM in DigitalOcean with Plesk pre-installed
-  - you want to create VM in Amazon EC2 with Plesk based on Marketplace offer
-  - you want to create bare Amazon EC2 VM based on some AMI and auto-deploy Plesk there
-  -  (TODO) you want to create VM in Azure with Plesk based on Marketplace offer
-  - (TODO) you want to create bare Azure VM based on some AMI and auto-deploy Plesk there
+  * you already have some server and need to deploy Plesk
+  * you want to create VM in DigitalOcean with Plesk pre-installed
+  * you want to create VM in Amazon EC2 with Plesk based on Marketplace offer
+  * you want to create bare Amazon EC2 VM based on some AMI and auto-deploy Plesk there
+  *  (TODO) you want to create VM in Azure with Plesk based on Marketplace offer
+  * (TODO) you want to create bare Azure VM based on some AMI and auto-deploy Plesk there
  
 
 You can run ansible in two ways.
