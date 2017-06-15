@@ -42,3 +42,10 @@ When you attempt to create VM from AMI published in Marketplace, you can see a m
 TASK [amazon-ec2 : Create EC2 Instance]
 ***************************************
 fatal: [localhost]: FAILED! => {"changed": false, "failed": true, "msg": "Instance creation failed => OptInRequired: In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit http://aws.amazon.com/marketplace/pp?sku=dw81irkz67efb1tr712312313uet"}
+
+ Execution ansible-playbook via Docker
+ -------------------------------------
+ There is a known with required libs in the packages docker image. The following image is used https://hub.docker.com/r/williamyeh/ansible/ since ansible doesn't support/develop their own.
+ So, since the latest roles update, execution via docker doesn't work for now :(
+   
+ 
