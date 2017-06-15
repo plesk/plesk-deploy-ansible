@@ -32,8 +32,6 @@ admin_zip: 8200
 admin_country: SW
 admin_phone: 89139130000
 
-plesk_admin_password: ifgrfc2017
-
 ### Plesk settings end
 ######################################################
 
@@ -59,7 +57,7 @@ ssh_pubkey_file: ~/.ssh/id_rsa.pub
 ######################################################
 ### Digitalocean settings begin
 
-do_project_name: "segorov-ansible-test.plesk.space"
+do_project_name: "plesk-ansible-{{ansible_date_time.epoch}}.plesk.space"
 
 ### To get a list of all DC regions
 #list_of_regions='curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da" "https://api.digitalocean.com/v2/regions"'

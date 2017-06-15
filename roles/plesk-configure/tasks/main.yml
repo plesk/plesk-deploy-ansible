@@ -18,6 +18,11 @@
 - name: Initialize Plesk
   shell: (plesk bin init_conf --check-configured || plesk bin init_conf --init -passwd {{plesk_admin_password}} -admin_info_not_required true -ip-type shared -license_agreed true -admin_info_not_required true -email test@plesk.ru -company Plesk -address Nsk -city Nsk -state Nsk -zip 630000 -country RU -phone 89139130000)
 
+- name: Load credentials.yml with auth data
+  include_vars:
+    file: group_vars/credentials.yml
+    name: auth
+
 - name: Set Admin password
-  shell: plesk bin admin --set-password -passwd "{{plesk_admin_password}}"
+  shell: plesk bin admin --set-password -passwd "{{auth.plesk_admin_password}}"
   when: plesk_admin_password is defined
