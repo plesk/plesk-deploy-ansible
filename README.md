@@ -12,7 +12,7 @@ The playbooks allow to deploy Plesk in cases:
   - (TODO) you want to create bare Azure VM based on some AMI and auto-deploy Plesk there
  
 
-You need 2+ ansible.
+You need ansible v2+
 You can run ansible in two ways.
 
 The first one directly via CLI. In such case you need to have ansible installed on your machine:
@@ -34,6 +34,14 @@ Few words about inventory. It has two parts:
  - credentials "group_vars/credentials.yml" - contains a definition of credentials to your cloud accounts
 
 Note: Credentials inventory file is not included in a git repo and is added to .gitignore file
+
+Get Started
+===========
+To start work with the Plesk deployment playbooks you should:
+
+1. Define Amazon AWS and Digitalocesn credentials starting with: `cp -f group_vars/credentials.yml.sample group_vars/credentials.yml`
+2. Install ansible v2+
+3. Check group_vars/all.yml for settings specific for your account, especially Amazon AWS.
 
 
 FAQ
