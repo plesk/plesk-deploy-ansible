@@ -1,6 +1,8 @@
 This is a set of ansible playbooks for various Plesk deployment
 ===============================================================
 
+Overview
+--------
 The playbooks allow to deploy Plesk in cases:
   - you already have some server and need to deploy Plesk
   - you want to create VM in DigitalOcean with Plesk pre-installed
@@ -29,43 +31,6 @@ Few words about inventory. It has two parts:
  - credentials "group_vars/credentials.yml" - contains a definition of credentials to your cloud accounts
 
 Note: Credentials inventory file is not included in a git repo and is added to .gitignore file
-
-You can copy and paste the configuration sample below to group_vars/credentials.yml
-
->---
->### Variables listed here are applicable to all host groups
->
->### Note: don't be in illusion - all the credentials below are invalidated ;) 
->
->######################################################
->### Plesk Auth settings begin
->plesk_admin_password: changemepassword2017
->### Plesk Auth settings end
->######################################################
->
->
->######################################################
->### Digitalocean Auth settings begin
->### API token - to get the token go to panel and get in menu "API"
->do_api_token: 534420db28eb92a7dba3c73834cd246090de0ae2ec1d1bb45407889ec27279da
->### Digitalocean Auth settings end
->######################################################
->
->
->######################################################
->### Amazon AWS Auth settings begin
->amazon_aws_access_key: AKIAJEWLZ5BB6BHZZDUQ
->amazon_aws_secret_key: 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
->### Amazon AWS Auth settings end
->######################################################
->
->
->######################################################
->### Azure Auth settings begin
-># TBD
->### Azure Auth settings end
->######################################################
->
 
 
 FAQ
