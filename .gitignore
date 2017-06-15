@@ -1,2 +1,5 @@
 *.key
+.ansible
+.aws
+.ssh
 group_vars/credentials.yml
