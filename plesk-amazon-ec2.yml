@@ -13,4 +13,5 @@
   remote_user: root
   hosts: amazon_ec2_hosts
   roles:
-    - plesk-typical
+    - plesk-install
+    - plesk-configure
