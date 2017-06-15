@@ -1,12 +1,39 @@
 ---
 
+- name: Find AMI Image by Name
+  ec2_ami_find:
+    name: "{{ec2_ami_name}}"
+    region: "{{ec2_region_id}}"
+    no_result_action: fail
+  register: ami_find
+  when: ec2_ami_id is undefined
+
+- name: ec2_ami_id is not defined in configuration, the following AMI Images are available
+  debug: msg=""
+  #debug: msg="{{ item.0 }} is owned by {{ item.1 }}"
+  with_together:
+    - "{{ ami_find.results | map(attribute='ami_id') | list }}"
+    - "{{ ami_find.results | map(attribute='name') | list }}"
+  when: ami_find is defined
+
+- name: Please select and (ec2_ami_id) is defined
+  action: fail
+  when: ec2_ami_id is undefined and ami_find.results[1] is defined
+
+- set_fact:
+    ec2_ami_id: "{{ami_find.results[0].ami_id}}"
+
+#- name: Register ec2_ami_id
+#  register: 
+#  when: ec2_ami_id is undefined or ami_find.results[1] is defined
+
 - name: Create EC2 Instance
   ec2:
     aws_access_key: "{{amazon_aws_access_key}}"
     aws_secret_key: "{{amazon_aws_secret_key}}"
     key_name: "{{amazon_ssh_key_id}}"
     instance_type: "{{ec2_instance_type}}"
-    image: "{{ec2_image}}"
+    image: "{{ec2_ami_id}}"
     region: "{{ec2_region_id}}"
     vpc_subnet_id: "{{ec2_vpc_subnet_id}}"
     group_id: "{{ec2_security_group}}"
