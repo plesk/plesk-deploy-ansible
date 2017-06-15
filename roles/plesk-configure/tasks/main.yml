@@ -1,20 +1,4 @@
 ---
-# This playbook contains common plays that will be run on all nodes.
-
-- name: Download one-click-installer
-  get_url: url={{one_click_installer}} dest=/root/one-click-installer mode=0755
-
-- name: Install Plesk
-  command: /root/one-click-installer --tier "{{plesk_tier}}"
-# async: 3000
-# poll: 0
-# register: plesk_installer_sleeper
-
-#- name: Wait for Plesk installation
-# async_status: jid={{ plesk_installer_sleeper.ansible_job_id }}
-# register: job_result
-# until: job_result.finished
-# retries: 3000
 
 - name: Download Plesk license file
   get_url: url={{plesk_license_url}} dest=/root/plsk-license.xml mode=0644
@@ -34,5 +18,6 @@
 - name: Initialize Plesk
   shell: (plesk bin init_conf --check-configured || plesk bin init_conf --init -passwd {{plesk_admin_password}} -admin_info_not_required true -ip-type shared -license_agreed true -admin_info_not_required true -email test@plesk.ru -company Plesk -address Nsk -city Nsk -state Nsk -zip 630000 -country RU -phone 89139130000)
 
-#- name: Set Admin password
-# shell: plesk bin admin --set-password -passwd "{{plesk_admin_password}}"
+- name: Set Admin password
+  shell: plesk bin admin --set-password -passwd "{{plesk_admin_password}}"
+  when: plesk_admin_password is defined

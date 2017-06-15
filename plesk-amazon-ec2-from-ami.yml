@@ -6,3 +6,6 @@
   hosts: localhost
   roles:
     - amazon-ec2
+    - { role: ssh-available, hosts_to_check: "{{groups['amazon_ec2_hosts']}}" }
+    #- { role: ssh-available, host_to_check: "{{ec2.instances[0].public_dns_name}}" }
+    

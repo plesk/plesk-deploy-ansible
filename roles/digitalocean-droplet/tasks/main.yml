@@ -21,11 +21,3 @@
     name: "{{ digital_ocean_droplet.droplet.ip_address }}"
     groups: digitalocean_hosts
   when: digital_ocean_droplet.droplet is defined
-
-- name: Wait for port 22 to become available.
-  local_action: "wait_for port=22 host={{ digital_ocean_droplet.droplet.ip_address }}"
-
-- pause:
-    seconds: 15
-
-

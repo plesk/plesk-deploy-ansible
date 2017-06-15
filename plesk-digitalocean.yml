@@ -6,9 +6,12 @@
   hosts: localhost
   roles:
     - digitalocean-droplet
+    #- { role: ssh-available, host_to_check: digital_ocean_droplet.droplet.ip_address }
+    - { role: ssh-available, hosts_to_check: "{{groups['digitalocean_hosts']}}" }
 
 - name: Plesk install to Droplet
   remote_user: root
   hosts: digitalocean_hosts
   roles:
-    - plesk-typical
+    - plesk-install
+    - plesk-configure

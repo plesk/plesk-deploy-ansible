@@ -5,4 +5,5 @@
   remote_user: root
   hosts: plesk-standalone
   roles:
-    - plesk-typical
+    - plesk-install
+    - plesk-configure

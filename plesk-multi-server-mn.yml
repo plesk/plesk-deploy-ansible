@@ -6,16 +6,6 @@
   remote_user: root
 
   roles:
-    - plesk-typical
+    - plesk-install
+    - plesk-configure
     - plesk-multi-server-mn
-
-
-#- name: Send notification message via Slack all options
-#  slack:
-#    token: https://hooks.slack.com/services/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
-#    msg: "Management Node installation {{ inventory_hostname }} is completed"
-#    channel: "@segorov"
-#    username: "Ansible on {{ inventory_hostname }}"
-#    icon_url: "http://www.example.com/some-image-file.png"
-#    link_names: 0
-#    parse: 'none'

@@ -6,8 +6,8 @@
 
   roles:
 #    - swap-enabled
-    - plesk-typical
-
+    - plesk-install
+    - plesk-configure
 
 - include: plesk-multi-server-mn.yml
 - include: plesk-multi-server-sn.yml
