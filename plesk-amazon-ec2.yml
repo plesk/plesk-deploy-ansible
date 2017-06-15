@@ -10,8 +10,10 @@
     - { role: ssh-available, hosts_to_check: "{{groups['amazon_ec2_hosts']}}" }
     
 - name: Plesk install to Amazon EC2
-  remote_user: root
+  remote_user: "{{ec2_remote_ssh_user}}"
+  become_user: root
   hosts: amazon_ec2_hosts
   roles:
     - plesk-install
     - plesk-configure
+    - plesk-get-access

@@ -1,10 +1,19 @@
 ---
+
+- set_fact:
+    ssh_delay: 60
+  when: ssh_delay is undefined
+
+- set_fact:
+    ssh_timeout: 400
+  when: ssh_timout is undefined
+
 - name: Wait for SSH to come up
   wait_for:
     host: "{{item}}"
     port: 22
-    delay: 60
-    timeout: 320
+    delay: "{{ssh_delay}}"
+    timeout: "{{ssh_timeout}}"
     state: started
   with_items: "{{hosts_to_check}}"
   when: hosts_to_check is defined
@@ -13,8 +22,8 @@
   wait_for:
     host: "{{host_to_check}}"
     port: 22
-    delay: 60
-    timeout: 320
+    delay: "{{ssh_delay}}"
+    timeout: "{{ssh_timeout}}"
     state: started
   when: host_to_check is defined
 

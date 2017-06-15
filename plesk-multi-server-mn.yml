@@ -4,8 +4,8 @@
 - name: Install Management Node
   hosts: management-node
   remote_user: root
-
   roles:
     - plesk-install
     - plesk-configure
     - plesk-multi-server-mn
+    - plesk-get-access

@@ -1,0 +1,18 @@
+---
+
+- name: Load credentials.yml with auth data
+  include_vars:
+    file: group_vars/credentials.yml
+    name: auth
+
+- name: Plesk Access via token
+  command: echo "To access Plesk Panel you should follow the link in your browser."
+  when: auth.plesk_admin_password is undefined
+
+- name: Execute "plesk login"
+  shell: plesk login
+  when: auth.plesk_admin_password is undefined
+
+- name: Plesk Access via password
+  command: echo "The password defined in ansible configuration is set up for Plesk admin. To access Plesk you should navigate https://`hostname`:8443"
+  when: auth.plesk_admin_password is defined

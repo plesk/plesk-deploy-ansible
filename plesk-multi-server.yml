@@ -3,11 +3,10 @@
 - name: Prepare Servers (Install Plesk)
   hosts: all
   remote_user: root
-
   roles:
 #    - swap-enabled
     - plesk-install
     - plesk-configure
-
+    - plesk-get-access
 - include: plesk-multi-server-mn.yml
 - include: plesk-multi-server-sn.yml

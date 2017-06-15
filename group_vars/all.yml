@@ -110,6 +110,11 @@ ec2_region_id: eu-west-1
 # note: if by the specified mask more than one image is found then task will be stopped with a list of available images
 ec2_ami_name: "*Plesk*17.5*WordPress*CentOS*7*"
 
+### a remote user, which will be used for access via SSH
+# In case of Plesk AMIs for CentOS based it's "centos", for Ubuntu it's "ubuntu"
+# For bare images "ec2-user" is required by Amazon
+ec2_remote_ssh_user: centos
+
 ### Get a list of available subnets from your AWS account
 # aws ec2 describe-subnets | less
 ec2_vpc_subnet_id: subnet-792ef230
